@@ -71,12 +71,11 @@ public class SaveableDictionary {
     public boolean save() {
     try (FileWriter fw = new FileWriter(this.source)) {
         Set<String> saved = new HashSet<>();
-        for (String word : this.translations.keySet()) {
-            if (!saved.contains(word)) {
-                String translation = this.translations.get(word);
-                fw.write(word + ":" + translation + System.lineSeparator());
-                saved.add(word);
-                saved.add(translation);
+        for (String k : this.translations.keySet()) {
+            if (!saved.contains(k)) {
+                fw.write(k + ":" + translations.get(k) + System.lineSeparator());
+                saved.add(k);
+                saved.add(translations.get(k));
             }
         }
         return true;
